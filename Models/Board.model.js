@@ -13,12 +13,9 @@ const Boardschema = mongoose.Schema({
     members:{
         type:[String],
         default:undefined
-    },
-    timestamps:{
-        createdAt:true,
-        updatedAt:true
     }
-})
+    
+},{timestamps:true})
 
 // Book Model
 const Bookmodel = mongoose.model('boards',Boardschema);

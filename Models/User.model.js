@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Userschema = mongoose.Schema({
     googleId:{
         type:String,
+        unique:true,
         required:true
     },
     name:{
@@ -12,6 +13,7 @@ const Userschema = mongoose.Schema({
     },
     email:{
         type:String,
+        unique:true,
         required:true
     },
     avatar:{
@@ -21,12 +23,8 @@ const Userschema = mongoose.Schema({
     recentlyVisitedBoards:{
         type:[String],
         default:undefined
-    },
-    timestamps:{
-        createdAt:true,
-        updatedAt:true
     }
-});
+},{timestamps:true});
 
 // User Model
 const Usermodel = mongoose.model('users',Userschema);

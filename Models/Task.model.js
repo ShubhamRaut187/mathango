@@ -26,12 +26,8 @@ const Taskschema = mongoose.Schema({
     deadline:{
         type:String,
         required:true
-    },
-    timestamps:{
-        createdAt:true,
-        updatedAt:true
     }
-});
+},{timestamps:true});
 
 // Task Model
 const Taskmodel = mongoose.model('tasks',Taskschema);
