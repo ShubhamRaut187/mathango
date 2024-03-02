@@ -18,10 +18,10 @@ const Boardschema = mongoose.Schema({
 },{timestamps:true})
 
 // Book Model
-const Bookmodel = mongoose.model('boards',Boardschema);
+const Boardmodel = mongoose.model('boards',Boardschema);
 
 module.exports = {
-    Bookmodel
+    Boardmodel
 }
 
 

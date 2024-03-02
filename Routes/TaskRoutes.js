@@ -86,3 +86,7 @@ TaskRouter.delete('/delete/:id',Authentication,async(req,res)=>{
         console.log(error);
     }
 })
+
+module.exports = {
+    TaskRouter
+}
