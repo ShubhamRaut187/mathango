@@ -12,7 +12,7 @@ const Boardschema = mongoose.Schema({
     },
     members:{
         type:[String],
-        default:undefined
+        default:[]
     }
     
 },{timestamps:true})

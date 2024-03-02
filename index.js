@@ -2,18 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const {passport} = require('./Configuration/google-oauth.js');
-require('dotenv').config();
+const {limiter} = require('./Middlewares/ratelimiter.js')
 const {connection} = require('./Configuration/db.js')
-const {cacheMiddleware} = require('./Middlewares/cacheMiddleware.js')
-
+// const {cacheMiddleware} = require('./Middlewares/cacheMiddleware.js')
+require('dotenv').config();
 const app = express();
 
 // Middlewares
 app.use(express.json());
 app.use(cors());
+app.use(limiter);
 
 // Basic Routes
-app.get('/',cacheMiddleware,(req,res)=>{
+app.get('/',(req,res)=>{
     res.status(200).send('Welcome to mathango kanban board backend...!');
 });
 
@@ -26,8 +27,8 @@ app.get('/auth/google/callback',
   function(req, res) {
     // Successful authentication, redirect home.
     const user = req.user;
-    const token = jwt.sign({userID:user._id},'Secret Token',{expiresIn:'1h'});
-    res.json({token,user});
+    const token = jwt.sign({userID:user._id},'SecretToken',{expiresIn:'1h'});
+    res.json({token});
     // res.redirect('/');
   });
 
